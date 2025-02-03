@@ -18,11 +18,6 @@ This is a simple **Spreadsheet Interface** built using **HTML, CSS, and jQuery**
 - **CSS** for styling
 - **JavaScript & jQuery** for dynamic interactions
 
-## Usage
-- Click on any cell to start editing.
-- Use the menu bar and ribbon for formatting.
-- Navigate between sheets using the sheet bar.
-
 ## JavaScript Functionality
 - Handles cell selection and editing.
 - Implements the "Select All" functionality for the spreadsheet.
