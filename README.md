@@ -10,7 +10,7 @@ This is a simple **Spreadsheet Interface** built using **HTML, CSS, and jQuery**
 - Formula bar for displaying and editing cell contents
 - Grid layout with **column and row headers**
 - Select all box to select the entire spreadsheet
-- Multiple sheets support with navigation buttons
+- Multiple sheets support with navigation buttons 
 - jQuery integration for enhanced interactivity
 
 ## Technologies Used
