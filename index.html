@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Excel Clone</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="left-section">
+                <img src="https://static.vecteezy.com/system/resources/previews/049/116/742/non_2x/microsoft-excel-icon-transparent-background-free-png.png" 
+                     alt="Excel Logo" class="excel-logo">
+                
+                <div class="autosave-container">
+                    <span class="autosave-text">AutoSave</span>
+                    <label class="switch">
+                        <input type="checkbox" id="autosave-toggle">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <!-- Undo Button -->
+                    <div class="icon" id="undo-icon">
+                        &#x21b6; <!-- Unicode for Undo icon -->
+                    </div>
+
+                    <!-- Redo Button -->
+                    <div class="icon" id="redo-icon">
+                        &#x21b7; <!-- Unicode for Redo icon -->
+                    </div>
+                </div>
+            </div>
+            
+            <span class="file-title">Book-1 Excel</span>
+            
+            <!-- Search Bar Container -->
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search">
+                <span class="material-icons search-icon">search</span>
+            </div>
+
+            <div class="right-section">
+                <!-- Optional right section (for buttons/icons if needed) -->
+            </div>
+        </div>
+
+        <!-- Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-item">File</div>
+            <div class="menu-item selected">Home</div>
+            <div class="menu-item">Insert</div>
+            <div class="menu-item">Layout</div>
+            <div class="menu-item">Data</div>
+            <div class="menu-item">View</div>
+            <div class="menu-item">Review</div>
+            <div class="menu-item">Help</div>
+        </div>
+
+        <!-- Icon Bar -->
+        <div class="menu-icon-bar">
+            <span class="material-icons icon">content_cut</span>
+            <span class="material-icons icon">content_copy</span>
+            <span class="material-icons icon">content_paste</span>
+            <span class="material-icons icon">format_bold</span>
+            <span class="material-icons icon">format_italic</span>
+            <span class="material-icons icon">format_underlined</span>
+            <span class="material-icons icon">format_align_left</span>
+            <span class="material-icons icon">format_align_center</span>
+            <span class="material-icons icon">format_align_right</span>
+
+            <select class="font-family-selector">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+            <select class="font-size-selector">
+                <option value="12px">12</option>
+                <option value="14px">14</option>
+                <option value="16px">16</option>
+                <option value="18px">18</option>
+            </select>
+        </div>
+
+        <!-- Formula Bar -->
+        <div class="formula-bar">
+            <div class="left-box-container">
+                <div class="insert-function-box">
+                    
+                    <input type="text" id="function-input" placeholder="Insert function...">
+                </div>
+            </div>
+            <input type="text" id="formula-input" placeholder="Enter formula or text">
+        </div>
+
+        <!-- Data Container -->
+        <div class="data-container">
+            <div class="top-left-box">
+                <span class="material-icons icon">select_all</span>
+            </div>
+            <div class="column-name-container" id="column-names"></div>
+            <div class="row-name-container" id="row-names"></div>
+            <div class="input-cell-container" id="input-cells"></div>
+        </div>
+
+        <!-- Sheet Bar -->
+        <div class="sheet-bar">
+            <span class="material-icons icon left-scroll">chevron_left</span>
+            <span class="material-icons icon right-scroll">chevron_right</span>
+            <div class="sheet-names">
+                <div class="sheet-name selected">Sheet1</div>
+            </div>
+            <span class="material-icons icon add-sheet">add_circle</span>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

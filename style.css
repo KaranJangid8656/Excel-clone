@@ -1,0 +1,387 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Title Bar */
+.title-bar {
+    height: 4vh;
+    background-color: #e4ede8;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    color: rgb(11, 11, 11);
+    cursor: pointer;
+    gap: 20px;
+    padding: 10px 55px; /* Adjust the padding as needed */
+}
+
+.excel-logo {
+    width: 60px;
+    height: 55px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+}
+
+.autosave-container {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #198739;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.autosave-text {
+    margin-left: 8px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+/* Undo and Redo */
+#undo-icon, #redo-icon {
+    font-size: 24px;
+    color: #070606;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    padding: 4px;
+    border-radius: 75%;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+#undo-icon:hover, #redo-icon:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+    color: #107c41;
+}
+
+/* Menu Bar */
+.menu-bar {
+    height: 5vh;
+    background-color: #e9eeeb;
+    display: flex;
+}
+
+.menu-item {
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+    position: relative;
+    color: rgb(5, 5, 5);
+}
+
+.menu-item.selected {
+    color: rgb(3, 3, 3);
+    cursor: pointer;
+    border-bottom: 4px solid #0f0f0b;
+    font-weight: bold;
+}
+
+.menu-item:not(.selected):hover {
+    background-color: rgb(108, 131, 108);
+    cursor: pointer;
+}
+
+/* Menu Icon Bar */
+.menu-icon-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.icon:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+    color: #107c41;
+}
+
+.font-family-selector, .font-size-selector {
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* Formula Bar */
+.formula-bar {
+    height: 85px;
+    background-color: #fff;
+    border-bottom: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding-left: 450px;
+    padding-right: 10px;
+}
+
+.formula-bar input {
+    width: 100%;
+    height: 7px;
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 48px;
+}
+
+.formula-bar input:focus {
+    border-color: #107c41;
+    background-color: #f0f8ff;
+}
+
+/* Data Container */
+.data-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    background-color: #f9f9f9;
+    overflow: auto;
+    width: 100%;
+    height: 500px;
+}
+
+/* Select All Box */
+.top-left-box {
+    width: 40px;
+    height: 30px;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+/* Column Headers */
+.column-name-container {
+    display: grid;
+    grid-template-columns: 125px repeat(99, 125px);
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 0;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    z-index: 1;
+}
+
+.column-cell {
+    width: 125px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Row Headers */
+.row-name-container {
+    display: grid;
+    grid-template-rows: repeat(100, 30px);
+    position: absolute;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ccc;
+    z-index: 1;
+}
+
+.row-cell {
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid for Cells */
+.input-cell-container {
+    display: grid;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    grid-template-columns: repeat(100, 125px);
+    grid-template-rows: repeat(100, 30px);
+}
+
+.cell {
+    width: 125px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 14px;
+    background: transparent;
+}
+
+.selected-cell {
+    border: 1.5px solid rgb(52, 151, 67);
+    background-color: rgb(213, 230, 214);
+}
+
+/* Sheet Bar */
+.sheet-bar {
+    height: 40px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-top: 1px solid #ccc;
+    position: relative;
+    justify-content: flex-start;
+    width: 100%;
+    box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.search-bar {
+    padding: 5px 20px;
+    font-size: 16px;
+    width: 320px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    padding: 8px;
+    background-color: transparent;
+}
+
+#search-input::placeholder {
+    color: #888;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+}
+
+.search-icon:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+    color: #107c41;
+}
+
+
+
+
+
+
+
+#function-input {
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 48px;
+    margin-right: 10px;
+
+}
+
+#function-input:focus {
+    border-color: #107c41;
+    background-color: #f0f8ff;
+}
