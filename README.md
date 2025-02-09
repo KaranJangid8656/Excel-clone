@@ -1,5 +1,5 @@
 # Excel-clone
-
+  
 
 This is a simple **Spreadsheet Interface** built using **HTML, CSS, and jQuery**. It provides a basic UI similar to a spreadsheet application, including a menu bar, ribbon bar, formula bar, and a data grid with selectable cells.
 
