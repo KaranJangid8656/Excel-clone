@@ -1,12 +1,12 @@
 window.onload = function () {
     const numRows = 100;
     const numCols = 100;
-    let selectedCell = null; // Store the currently selected cell
+    let selectedCell = null; 
 
     const dataContainer = document.querySelector('.data-container');
 
     function generateColumnHeaders() {
-        let columns = `<div class="top-left-box"></div>`; // Placeholder for top-left box
+        let columns = `<div class="top-left-box"></div>`; 
         for (let i = 1; i <= numCols; i++) {
             const colLetter = getColumnLetter(i);
             columns += `<div class="column-cell">${colLetter}</div>`;
@@ -32,19 +32,16 @@ window.onload = function () {
         return letter;
     }
 
-    // Create column headers
     const columnNamesContainer = document.createElement('div');
     columnNamesContainer.classList.add('column-name-container');
     columnNamesContainer.innerHTML = generateColumnHeaders();
     dataContainer.appendChild(columnNamesContainer);
 
-    // Create row headers
     const rowNamesContainer = document.createElement('div');
     rowNamesContainer.classList.add('row-name-container');
     rowNamesContainer.innerHTML = generateRowHeaders();
     dataContainer.appendChild(rowNamesContainer);
 
-    // Create input cell grid
     const inputCellContainer = document.createElement('div');
     inputCellContainer.classList.add('input-cell-container');
     inputCellContainer.style.gridTemplateColumns = `repeat(${numCols}, 125px)`;
@@ -64,7 +61,6 @@ window.onload = function () {
 
     dataContainer.appendChild(inputCellContainer);
 
-    // Undo and Redo functionality (simple)
     let undoStack = [];
     let redoStack = [];
 
@@ -84,17 +80,15 @@ window.onload = function () {
         }
     });
 
-    // Save state for undo/redo
     function saveState() {
         const state = [];
         document.querySelectorAll('.cell-input').forEach(input => {
             state.push(input.value);
         });
         undoStack.push(state);
-        if (undoStack.length > 10) undoStack.shift(); // Limit the stack size
+        if (undoStack.length > 10) undoStack.shift(); 
     }
 
-    // Restore state
     function restoreState(state) {
         let i = 0;
         document.querySelectorAll('.cell-input').forEach(input => {
@@ -102,12 +96,11 @@ window.onload = function () {
         });
     }
 
-    // Track changes in cells for undo
+ 
     document.querySelectorAll('.cell-input').forEach(input => {
         input.addEventListener('input', saveState);
     });
 
-    // Event delegation for cell selection
     inputCellContainer.addEventListener('click', function (e) {
         if (e.target && e.target.classList.contains('cell')) {
             if (selectedCell) {
@@ -127,7 +120,7 @@ $(document).ready(function () {
             $(".autosave-text").text("AutoSave ");
 
         }
-    });// Example to handle cell selection and update cell address
+    });
 let selectedCell = null;
 
 document.querySelectorAll('.cell').forEach(cell => {
@@ -138,9 +131,8 @@ document.querySelectorAll('.cell').forEach(cell => {
         selectedCell = this;
         selectedCell.classList.add('selected-cell');
 
-        // Update the cell address
-        const row = selectedCell.parentNode.rowIndex + 1; // row number (1-based index)
-        const column = selectedCell.cellIndex + 1; // column number (1-based index)
+        const row = selectedCell.parentNode.rowIndex + 1; 
+        const column = selectedCell.cellIndex + 1;
         document.getElementById('cell-address').innerText = `${String.fromCharCode(64 + column)}${row}`;
     });
 });
