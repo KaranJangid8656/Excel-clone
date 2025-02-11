@@ -10,7 +10,7 @@ window.onload = function () {
         for (let i = 1; i <= numCols; i++) {
             const colLetter = getColumnLetter(i);
             columns += `<div class="column-cell">${colLetter}</div>`;
-        }
+        } 
         return columns;
     }
 
