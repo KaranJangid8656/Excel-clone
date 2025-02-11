@@ -1,31 +1,29 @@
-# Excel-clone
-  
+# Excel Clone
 
 This is a simple **Spreadsheet Interface** built using **HTML, CSS, and jQuery**. It provides a basic UI similar to a spreadsheet application, including a menu bar, ribbon bar, formula bar, and a data grid with selectable cells.
 
 ## Features
-- Title bar displaying the application name
-- Menu bar with options like **File, Edit, View, Insert, and Format**
-- Ribbon bar with basic formatting tools (**Bold, Italic, Underline**)
-- Formula bar for displaying and editing cell contents
-- Grid layout with **column and row headers**
-- Select all box to select the entire spreadsheet
-- Multiple sheets support with navigation buttons 
-- jQuery integration for enhanced interactivity
+- **Title Bar** – Displays the application name
+- **Menu Bar** – Includes options like **File, Edit, View, Insert, and Format**
+- **Ribbon Bar** – Basic formatting tools (**Bold, Italic, Underline**)
+- **Formula Bar** – Displays and allows editing of cell contents
+- **Grid Layout** – Interactive **columns, rows, and selectable cells**
+- **Select All Box** – Quickly selects the entire spreadsheet
+- **Multiple Sheets Support** – Navigate between different sheets dynamically
+- **jQuery Integration** – Enhances interactivity and responsiveness
 
 ## Technologies Used
-- **HTML** for structure
-- **CSS** for styling
-- **JavaScript & jQuery** for dynamic interactions
+- **HTML** – Defines the structure of the spreadsheet
+- **CSS** – Provides styling and layout
+- **JavaScript & jQuery** – Enables interactivity and functionality
 
 ## JavaScript Functionality
-- Handles cell selection and editing.
-- Implements the "Select All" functionality for the spreadsheet.
-- Manages multiple sheet navigation dynamically.
+- Handles **cell selection and editing**
+- Implements **"Select All" functionality** for the spreadsheet
+- Manages **multiple sheet navigation** dynamically
 
 ## Dependencies
-- [jQuery](https://jquery.com/) (Ensure jQuery is included in the project)
+- [jQuery](https://jquery.com/) – Ensure jQuery is included in the project for proper functionality
 
 ## License
 This project is licensed under the **MIT License**.
-
